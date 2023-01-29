@@ -86,7 +86,6 @@ $(document).ready(function() {
 				$(".menu-guest").hide();
 				$(".menu-user").show();
 				$("#span-name").text($("input[name='name']").val());
-
 			}
 		});
 				}

@@ -46,11 +46,33 @@ if(isset($_COOKIE['remember'])){
 </div>
 
 <script type="text/javascript">
+	// $(document).ready(function() {
+	// // 		$("#form-signin").submit(function(event) {
+	// // 	event.preventDefault();
+	// // });
+	// 	$("#form-signin")
+	// 		$.ajax({
+	// 			url: 'process_signin.php',
+	// 			type: 'post',
+	// 			dataType: 'html',
+	// 			data: $("#form-signin").serializeArray(),
+	// 		})
+	// 		.done(function(response) {
+	// 		if (response === '1') {
+	// 			alert("thanh cong");
+	// 			// $("#modal-signin").toggle();
+	// 			// $(".modal-backdrop").hide();
+	// 			// $(".menu-guest").hide();
+	// 			// $(".menu-user").show();
+	// 			// $("#span-name").text($("input[name='email']").val());
+	// 		}else{
+	// 			alert("that bai");
+	// 		}	
+	// 	}
+	// });
 	$(document).ready(function() {
-				$("#form-signin").submit(function(event) {
+		$("#form-signin").submit(function() {
 			event.preventDefault();
-		});
-		$("#form-signin")
 			$.ajax({
 				url: 'process_signin.php',
 				type: 'post',
@@ -58,18 +80,19 @@ if(isset($_COOKIE['remember'])){
 				data: $("#form-signin").serializeArray(),
 			})
 			.done(function(response) {
-				if (response === '1') {
+			if (response) {
+				console.log(response);
 				alert("thanh cong");
 				$("#modal-signin").toggle();
 				$(".modal-backdrop").hide();
 				$(".menu-guest").hide();
 				$(".menu-user").show();
-				$("#span-name").text($("input[name='email']").val());
+				$("#span-name").text(response);
 			}else{
 				alert("that bai");
-			}
-
-				
-		}
+				console.log(response);
+			}	
+			});
+		});
 	});
 </script>
